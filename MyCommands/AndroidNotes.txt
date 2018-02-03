@@ -1,0 +1,115 @@
+Which compiler is used for compilation of Android code?
+
+Android Programs are commonly written in Java and compiled to bytecode for the Java virtual machine, which is then translated to Dalvik bytecode and stored in .dex (Dalvik EXecutable) and .odex (Optimized Dalvik EXecutable) files
+
+
+Which are the states in service life cycle?
+
+Create, start, running and destroy these are the services started by startService() and create, bind, unbind, destroy are the services created by bindServices(). 
+
+
+
+The menu can be placed into alphabetic shortcut mode by calling
+
+An alphabetic (or QWERTY) set of shortcuts set by calling setAlphabeticShortcut(). The menu is placed into alphabetic shortcut mode by calling setQwertyMode() on the menu with a true parameter.
+
+
+For __________ , code used by Android is not an open source?
+
+Android is an open source project.
+Following hardware drivers are closed source.
+Graphics driver, WiFi chipset driver, orientation sensor, the radio baseband software and camera drivers.
+
+
+
+If you provide a _________, your choice identifier (second parameter) can be 0.
+
+Runnable, If you provide a Runnable, your choice identifier (second parameter) can be 0. Otherwise, you should make your choice identifiers be an increment over FIRST (e.g., FIRST+1), so you do not collide with any Android system menu choices put on the same menu.
+
+
+ NotificationManager
+
+The NotificationManager is a system service. o use it, you need to get the service object via getSystemService(NOTIFICATION_SERVICE) from your activity.
+
+
+Which compiler is used for compilation of Android code
+
+
+
+Many Android Programs are commonly written in Java and compiled to bytecode for the Java virtual machine, which is then translated to Dalvik bytecode and stored in .dex (Dalvik EXecutable) and .odex (Optimized Dalvik EXecutable) files. 
+
+
+
+methods do we use to get the root of the tree?
+
+getRootView() method is used to get the root of the tree.
+For example, what is provided to the activity via setContentView(). 
+
+
+Which of the following(s) is/are the part of Android native library? 
+
+Explanation-
+
+SQLite – It provides various classes used for database management.
+WebKit – It is a web browser engine used to display internet content.
+SSL – It provides internet security.
+OpenGL – It is a Java interface to the OpenGL ES 3D graphics rendering API.
+
+
+_________makes appropriate list of application data for the other applications
+
+Explanation-
+
+Content provider applications can access data within other applications on the android system through content provider interfaces and expose internal applications to other applications.
+
+
+Is the Bluetooth serial port profile supported by Android?
+
+Explanation-
+
+Yes, The most common type of Bluetooth socket is RFCOMM, which is the type supported by the Android APIs. RFCOMM is a connection-oriented, streaming transport over Bluetooth. It is also known as the Serial Port Profile (SPP). To create a BluetoothSocket for connecting to a known device, use BluetoothDevice.
+
+
+What is the difference between a regular bitmap and a nine-patch image?
+
+Answer:
+
+In general, a Nine-patch image allows resizing that can be used as background or other image size requirements for the target device. The Nine-patch refers to the way you can resize the image: 4 corners that are unscaled, 4 edges that are scaled in 1 axis, and the middle one that can be scaled into both axes.
+
+
+
+
+Intents are used to Navigate from screen A to screen B
+
+
+If it is in between the APP then it is Implicit intents
+
+If it is externally the APP then we use Explicit Intents
+
+
+Manifest Files
+
+Manifest file where the activity user permissions, theme, icon, SDK versions, services , Broadcast receivers, google libraries
+
+If the for accessing the user permission
+
+
+
+Tools used to create layouts
+
+
+using XML based on Linear, Relative, Gridlayouts, Views
+
+
+
+Intent filters: Add any filters when you run the application,
+
+
+Activitiy and Fragment difference
+
+
+
+MVP is a pattern that seperates the data model from view through a presenter. This architecture improves the testability of the application
+
+
+

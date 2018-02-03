@@ -1,0 +1,401 @@
+git help config ==> command for help
+
+git init ==> for 
+
+pwd: print working directory
+
+ls: which list out the contents of the working directory or present directory
+
+
+pulling the changes from the master for the first time
+
+git remote add origin<git project URL>
+
+git pull origin master
+
+
+
+git config --list ==> to show the information regarding the partiular user 
+like email, username etc.
+
+ls -la ==> for tracking the project
+
+rm -rf  .git==> to remove/stop tracking the project
+
+git status ==> before making a commit to check the status of the 
+
+git add -A ==> to add all untacked/ uncommitesd/ changed files
+
+git add . ==> to Add all the files ot the staging area
+
+git commit -am "commit message" ==> this will commit all the 
+files in the presnet working copy (Caution: Use it only when you
+modify your files and don't use when you do deleting the files)
+
+git rm <file name> ==> to delete a particular file
+
+git mv <old file name> <new file name> ==> to rename a file
+
+examples: if your Red.txt is your old file and you want to 
+rename it to Green.txt then do
+
+git mv Red.txt Green.txt
+
+if you wanto move a file(example: Green.txt) to a 
+new folder(folder name:MyFolder) then 
+
+git mv Green.txt MyFolder/Green.txt
+
+git checkout -- <file name> ==> to checkout a particular file 
+from the remote repo( use it incase you are messed up a 
+particular file)
+
+git reset HEAD <file name> ==> to remove it from the staging 
+area(Example: git reset HEAD Myfile.txt)
+
+if you accientally made a messedup the code and made a commit and 
+and you want to go back to the previous commit then do
+
+git log ==> gives the list of commits with commit numbers
+
+get the commit number
+
+git checkout commit number --<file name> 
+
+example: git checkout hfkj12893903 myfile.txt
+
+
+
+git reset ==> to remove the files in the staging area/ Kind of Uncommit
+
+git clone ==> to clone the remote project
+
+git log ==> for knowing the Hash number of the commit made, and also let's 
+us know who commited the commit and the commit message
+
+
+==============Merge conflicts================
+
+if your commit gets rejected from the master while pushing (since you are 
+behind the master changes or your local code doesn't have latest changes)
+and you want to include your changes
+
+git pull --rebase origin master
+
+and then do git mergetool for revolving the conflicts
+
+git mergetool ==> to show the conflict and resolve
+
+git rebase --continue
+
+and then do
+
+git push origin master
+
+======
+
+git remote ==> shows origin
+
+git remote -v ==> where v is verbos, which shows the origin url of 
+the project.
+
+Viewing information about the remote repository
+ 
+git remote -v ==> Location of the branch
+
+git branch -a ==>  shows all the branches in the repository
+
+git diff ==> Shows the Differences
+
+git diff --staged ==> shows the differences or compares the 
+files in the staging area against repository
+
+git rm --cached <file name> ==> to unstage
+
+
+==
+
+Create/Name a branch 
+
+git branch name of the branch
+
+git checkout Branch name ==> to switch to any particular branch
+
+git push origin branch name ==> to push the changes to particular branch
+
+git branch -a ===> shows the branches
+
+===
+
+git checkout branch name ==> to switch to a particular branch
+
+git branch -d branch name ==> to delete the branch
+
+git push origin --delete branch name ==> to delete 
+the branch in the remote repository(i.e., pushed branch)
+
+================
+
+touch .gitignore ==> to add git ignore file in the project
+
+
+
+
+=====
+
+
+git reset "filename with the file format(Examaple: MyFile.txt  or MyFile.java)"==> to remove 
+the file frmo the staging area
+
+git reset ==>remove everything form the staging area.
+
+
+git add -A ==> To add all eveerything to the staging area
+
+git commit -m "Commit Message"
+
+
+git diff ==> to check what are the modificaions we made
+
+
+git push origin master ==> to push the repo
+
+
+git push origin master -f
+
+
+
+git branch "Branch Name" ==> To create a new branch
+
+git checkout "Branch Name" ===>switch to particular branch new branch
+ 
+
+=====
+
+More commits to come ===>
+
+
+
+git push -u origin "MyBranch" ==> to push the changes local changes to the remote branch
+
+
+git merge "Branch Name" ==> being on Master, to merge the branch changes 
+from a particular branch.
+
+
+
+git branch -d first_branch ==> to delete the branch locally 
+
+
+git push origin --delete "branch name" ==> to delete remote branch
+
+====
+
+
+git remote add origin https://github.com/username/branchname.git   ==>  To push the local project to Remote(Git)
+
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY ==> To Pull the project from the github to local
+
+
+Help Page: https://help.github.com/articles/connecting-to-github-with-ssh/
+
+
+
+
+
+for modifying the commit message:
+
+example: git commit -m "Wrong commit message"
+
+
+Then
+
+==>git log
+
+==>git commit --amend -m "Right commit message"
+
+
+
+
+When we make the commit to the wrong branch, we need to commit that wrong commit 
+from a right(desired branch)
+
+
+===> git log 
+
+switch to the desired branch/featured branch
+
+==>git checkout "Branch Name(Desired Branch name from which you want to commit)"
+
+Copy the hash code of the commit(Wrong commit)
+
+==>git cherry-pick "Hash of the wrong commit"
+
+check the
+
+==>git log
+
+Since cherry-ick doesn't delete the to delete the 
+commmit (or undoing the commit) accidentally committed 
+to master branch
+
+==>git checkout master(or the branch where you accidentally made commit)
+
+==>git reset --soft "hash code of wrong commit"
+
+check the git log to ensure 
+
+==>git log
+
+
+==>git status
+
+
+
+==>git reset "hash of the initial commit"
+
+
+you can seee some files in the staging area(since we made undone the commit)
+
+==>git reset "Initial commit(Hash code)"
+
+
+==>git reset --hard "hash code(initial commit/default file)"
+
+
+to get rid of untracked files we can use 
+
+==>git clean -df
+
+where d: gets rid of Untracked directory;
+f:gets rid of untracked files
+
+The command(git clean -df) is also useeful if you 
+accdentally unzipped the zip file in the project directory
+
+
+three different types of resets we should know
+
+git reset --soft, git reset mixed, git reset --hard
+
+
+
+
+==============
+
+
+
+
+when you accidentally ran(git reset --hard) on the 
+changes you need and you need some of the changes 
+
+==>git reflog
+
+it shows the what we exactly done previously
+
+
+
+
+================
+
+if other people pulled the unwanted changes or 
+what if you really want to undo a commit but other 
+people already pulled those unwanted changes
+
+==>git revert
+
+revert creates new commits to reverse the effect 
+of some earlier commits(accidental commits) this 
+way you don't rewrite any history, just to clarify 
+it is not going modify/delete our existing commits 
+that we made, it is going to create new commits on 
+top of the those old commits, that completlely undo 
+all unwanted changes, so the history 
+remains intact
+
+example:
+
+==>git log
+
+what if if want to undo a commit 
+(wrong commit with message 
+"Wrong commit" with hash code 23XXXX)
+
+
+==>git revert "23XXXX" (wrong commit's has code)
+ 
+check 
+
+==>git log
+
+
+it shows the all the commits  including the revert commit hash code
+
+Nice trick with
+
+==>git diff "Initaial commit(hash)" "second commit"
+
+it shows the differences
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if git rejects the push 
+
+Example==> https://github.com/username/repo ! [rejected] master -> master (fetch first)
+
+Then
+
+git fetch origin master
+git merge origin master
+
+
+
+
+
+==========================
+
+
+Just want to add more information to this file
+
+==========
+
+
+imagine if you have just committed a something and then realized there is a typo error
+
+git commit -a --amend -C HEAD
+
+it basically does is it all the modified changes/uncommitted changes and add them to 
+the previous commmit by keeping the same commit message
+
+
+
+
+
+
+
+
+
+
+
+Adding this line from the command line to text how it is going to appear on the git hub
+
