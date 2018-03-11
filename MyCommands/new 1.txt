@@ -1,16 +1,18 @@
 package com.example;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+public class CSVReadWriter {
 
-public class CSVWriter {
 
-
-    private static final String FILE_HEADER = "Type,Message,TimeStamp,Type2,Extra";
+    private static final String FILE_HEADER = "Type,Message,Name,TimeStamp";
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
 
@@ -18,15 +20,59 @@ public class CSVWriter {
             "                                  {\"Type\":\"VISTOR_MESSAGE\",\"Message\":\"I am having a doubt realeted with job. can you help me out\",\"TimeStamp\":\"2013322321\"}" +
             "           ]";
 
-    public CSVWriter()
+    public CSVReadWriter()
     {
 
     }
 
     public static void main(String[] args)
     {
-        CSVWriter writer = new CSVWriter();
-        writer.WriteCSV(System.getProperty("user.home")+"/csvfile.csv",JSONString);
+        CSVReadWriter writer = new CSVReadWriter();
+        File inputFile = new File(System.getProperty("user.home")+"/chatdata.json");
+
+        StringBuffer chatBuffer = new StringBuffer();
+        BufferedReader br = null;
+        if(inputFile.exists())
+        {
+            try {
+                br = new BufferedReader(new FileReader(inputFile));
+
+                String st;
+                while ((st = br.readLine()) != null)
+                {
+                    chatBuffer.append(st);
+                }
+                // System.out.println(st);
+            }catch(Exception ex)
+            {
+
+            }finally
+            {
+                try {
+                    if (br != null)
+                        br.close();
+                }catch(Exception e){}
+            }
+
+        }
+        else
+        {
+            System.out.println("Please give the proper input file location.");
+            return;
+        }
+        String chatArray = null;
+        //replace the data not related with JSON
+        if(chatBuffer != null)
+        {
+            String chatData = chatBuffer.toString();
+            chatData = chatData.replaceAll("WelcometoVerizonLiveChat","");
+            chatData = chatData.replaceAll("OnPauseCalled","");
+            chatData = chatData.replaceAll("OnResumeandrestartPollingCalled","");
+            chatData = chatData.replaceAll("}","},");
+            chatArray = "["+chatData +"]";
+        }
+
+        writer.WriteCSV(System.getProperty("user.home")+"/chatdata.csv",chatArray);
     }
 
     public void WriteCSV(String filePath, String jsonResponse)
@@ -48,19 +94,22 @@ public class CSVWriter {
             for(int i = 0; i < objArray.length(); i++)
             {
                 JSONObject singleObj = objArray.getJSONObject(i);
-                String type = singleObj.optString("Type");
-                String message = singleObj.optString("Message");
-                String timestamp = singleObj.optString("TimeStamp");
+                String type = singleObj.optString("type");
+                String message = singleObj.optString("msg");
+                String name = singleObj.optString("name");
+                String timestamp = singleObj.optString("timestamp");
 
                 fileWriter.append(type);
                 fileWriter.append(COMMA_DELIMITER);
                 fileWriter.append(message);
                 fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(name);
+                fileWriter.append(COMMA_DELIMITER);
                 fileWriter.append(timestamp);
                 fileWriter.append(NEW_LINE_SEPARATOR);
             }
 
-        System.out.println("CSV file created."+filePath);
+            System.out.println("CSV file created."+filePath);
 
 
         }catch(Exception ex)
@@ -80,4 +129,5 @@ public class CSVWriter {
         }
 
     }
+
 }
