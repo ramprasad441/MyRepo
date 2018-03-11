@@ -1,0 +1,83 @@
+package com.example;
+
+import java.io.FileWriter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+public class CSVWriter {
+
+
+    private static final String FILE_HEADER = "Type,Message,TimeStamp,Type2,Extra";
+    private static final String COMMA_DELIMITER = ",";
+    private static final String NEW_LINE_SEPARATOR = "\n";
+
+    private static final String JSONString = "[{\"Type\":\"AGENT_JOINED\",\"Message\":\"Hi Hello I am chandu joined in the call.How may I help you\",\"TimeStamp\":\"20133223212\"}," +
+            "                                  {\"Type\":\"VISTOR_MESSAGE\",\"Message\":\"I am having a doubt realeted with job. can you help me out\",\"TimeStamp\":\"2013322321\"}" +
+            "           ]";
+
+    public CSVWriter()
+    {
+
+    }
+
+    public static void main(String[] args)
+    {
+        CSVWriter writer = new CSVWriter();
+        writer.WriteCSV(System.getProperty("user.home")+"/csvfile.csv",JSONString);
+    }
+
+    public void WriteCSV(String filePath, String jsonResponse)
+    {
+
+        FileWriter fileWriter = null;
+        try {
+
+            fileWriter = new FileWriter(filePath);
+
+            fileWriter.append(FILE_HEADER.toString());
+
+            fileWriter.append(NEW_LINE_SEPARATOR);
+
+
+            JSONArray objArray = new JSONArray(jsonResponse);
+//            JSONArray objArray = obj.
+//
+            for(int i = 0; i < objArray.length(); i++)
+            {
+                JSONObject singleObj = objArray.getJSONObject(i);
+                String type = singleObj.optString("Type");
+                String message = singleObj.optString("Message");
+                String timestamp = singleObj.optString("TimeStamp");
+
+                fileWriter.append(type);
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(message);
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(timestamp);
+                fileWriter.append(NEW_LINE_SEPARATOR);
+            }
+
+        System.out.println("CSV file created."+filePath);
+
+
+        }catch(Exception ex)
+        {
+            System.out.println("Error in writing the file - >" +ex.getMessage());
+        } finally {
+
+            try{
+
+                fileWriter.flush();
+                fileWriter.close();
+
+            }catch(Exception ex)
+            {
+
+            }
+        }
+
+    }
+}
